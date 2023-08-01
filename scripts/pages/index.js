@@ -8,33 +8,32 @@ function getPhotographer() {
   fetch("../data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
+      //   console.log(data.photographers);
       const photographersInfo = data.photographers.map((photographers) => {
-        const photographerName = photographers.name;
-        const photographerPic = `./assets/photographers/${photographers.portrait}`;
-        const photographerCity = photographers.city;
-        const photographerCountry = photographers.country;
-        const photographerTagline = photographers.tagline;
-        const photographerPrice = photographers.price;
-        const photographerId = photographers.id;
+        // eslint-disable-next-line object-curly-newline, operator-linebreak
+        const { city, country, id, name, portrait, price, tagline } =
+          photographers;
+        const photographerPic = `./assets/photographers/${portrait}`;
         // console.log(photographers);
         return {
           photographerPic,
-          photographerName,
-          photographerCity,
-          photographerCountry,
-          photographerTagline,
-          photographerPrice,
-          photographerId,
+          city,
+          country,
+          name,
+          id,
+          portrait,
+          price,
+          tagline,
         };
       });
       photographersInfo.forEach((photographer) => {
         displayPhotographers.innerHTML += `
           <article class="photographer_card">
-            <img src="${photographer.photographerPic}" alt="Portrait de ${photographer.photographerName}"/>
-            <h2>${photographer.photographerName}</h2>
-            <h4>${photographer.photographerCity}, ${photographer.photographerCountry}</h4>
-            <p>${photographer.photographerTagline}</p>
-            <aside>${photographer.photographerPrice}€/jour</aside>
+            <img src="${photographer.photographerPic}" alt="Portrait de ${photographer.name}"/>
+            <h2>${photographer.name}</h2>
+            <h4>${photographer.city}, ${photographer.country}</h4>
+            <p>${photographer.tagline}</p>
+            <aside>${photographer.price}€/jour</aside>
           </article>
         `;
       });
