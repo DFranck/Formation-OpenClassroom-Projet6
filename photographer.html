@@ -1,36 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button
+          class="contact_button"
+          onclick="displayModal()"
+          aria-label="Ouvrir le formulaire de contact"
+        >
+          Contactez-moi
+        </button>
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-labelledby="modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal">
+        <header>
+          <h2 id="modal-title">Contactez-moi</h2>
+          <img
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            aria-label="Fermer le formulaire de contact"
+            role="button"
+            tabindex="0"
+          />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+        <form>
+          <div>
+            <label for="prenom">Prénom</label>
+            <input id="prenom" name="prenom" aria-required="true" />
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
