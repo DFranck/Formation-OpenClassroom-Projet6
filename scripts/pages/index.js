@@ -1,8 +1,8 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable quotes */
 async function getPhotographers() {
   const response = await fetch("../../data/photographers.json");
   const { photographers } = await response.json();
-  console.log(photographers);
   return {
     photographers,
   };
@@ -48,7 +48,6 @@ function displayPhotographers(photographers) {
 async function init() {
   const { photographers } = await getPhotographers();
   displayPhotographers(photographers);
-  console.log(photographers);
 }
 
 init();
