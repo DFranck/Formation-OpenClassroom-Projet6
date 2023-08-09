@@ -1,14 +1,22 @@
 attributs ARIA # utilisez KeyboardEvent.key
 
+---
+
+tri
+
+##Créer le bouton et la div pour le menu déroulant: Comme vous l'avez mentionné, vous pouvez utiliser un bouton pour déclencher l'affichage du menu et une div pour contenir les options.
+
+Gérer l'affichage du menu: Vous pouvez utiliser un gestionnaire d'événements pour afficher ou masquer le menu lorsque l'utilisateur clique sur le bouton. Vous pouvez aussi ajouter un événement de "blur" ou "focusout" pour masquer le menu lorsque l'utilisateur clique en dehors du bouton ou du menu.
+
+Créer les options de tri: Vous pouvez ajouter des éléments (par exemple, des divs ou des liens) à la div du menu pour représenter les différentes options de tri.
+
+Mettre à jour le contenu de la galerie: Lorsqu'une option est sélectionnée, vous pouvez utiliser JavaScript pour mettre à jour le contenu de la galerie en fonction de l'option choisie. Vous pouvez également mettre à jour le texte du bouton pour refléter l'option sélectionnée.
+
+Styliser le menu: Vous pouvez utiliser CSS pour styliser le bouton et le menu déroulant comme vous le souhaitez, y compris en ajoutant des icônes Font Awesome ou autres pour les flèches.
+
+---
+
 Prototype des fonctionnalités :
-Nous devons créer les pages suivantes pour le prototype :
-● Page d'accueil :
-○ Liste de tous les photographes avec leur nom, leur slogan, leur
-localisation, leur prix/heure et une image miniature de leur choix.
-○ Lorsque l'utilisateur clique sur la vignette d'un photographe, il est
-amené à sa page.
-● Page des photographes (le contenu de la page sera généré de manière
-dynamique en fonction du photographe) :
 ○ Affiche une galerie des travaux du photographe.
 ○ Les photographes peuvent montrer à la fois des photos et des vidéos.
 ■ Dans le cas des vidéos, montrer une image miniature dans la
