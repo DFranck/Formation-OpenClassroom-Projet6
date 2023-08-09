@@ -2,10 +2,43 @@
   display: none;
 }
 
+body {
+  padding: 0 100px;
+}
+
 .photograph-header {
+  position: relative;
+  padding: 0 50px;
   background-color: #fafafa;
   height: 300px;
-  margin: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.photographer-infos {
+  max-width: 40%;
+}
+.photographer-infos h2,
+.photographer-infos h3,
+.photographer-infos p {
+  font-weight: 400;
+}
+.photographer-infos h2 {
+  color: #d3573c;
+  font-size: 64px;
+  line-height: 83.33px;
+}
+.photographer-infos h3 {
+  margin-top: 10px;
+  color: #901c1c;
+  font-size: 24px;
+  line-height: 31.25px;
+}
+.photographer-infos p {
+  margin-top: 20px;
+  color: #525252;
+  font-size: 18px;
+  line-height: 23.44px;
 }
 
 .contact_button {
@@ -19,9 +52,91 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.contact_button:hover,
+.contact_button:focus {
+  background: #db8876;
+}
+.photographer-portrait {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  background-size: cover;
+  background-position: center;
 }
 
-.modal {
+.sort-gallery {
+  display: flex;
+  font-size: 18px;
+  line-height: 23.44px;
+  font-weight: 700;
+  margin: 10px 0;
+  gap: 20px;
+}
+/* .sort-gallery:focus .sort-selected {
+  display: none;
+  border: none;
+}
+.sort-gallery:focus .sort-to-select {
+  display: flex;
+} */
+.sort-gallery p {
+  margin-top: 25px;
+}
+.select-icons i {
+  position: absolute;
+  top: 69px;
+  right: 10%;
+  transform: translateY(-45px);
+}
+.sort-selected {
+  font-family: "DM Sans", sans-serif;
+  border: none;
+  position: relative;
+  background: #901c1c;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 23.44px;
+  font-weight: 700;
+  width: 170px;
+  height: 69px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-top: 4.5px;
+}
+.sort-to-select {
+  position: relative;
+  background: #901c1c;
+  color: #ffffff;
+  width: 150px;
+  height: 170px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-left: 20px;
+  display: none;
+}
+.sort-to-select button {
+  width: 150px;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  background: none;
+  color: #ffffff;
+  border: none;
+  font-size: 18px;
+  line-height: 23.44px;
+  font-weight: 700;
+  text-align: left;
+}
+
+button .modal {
   border-radius: 5px;
   background-color: #db8876;
   width: 50%;

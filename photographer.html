@@ -2,11 +2,19 @@
 <html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./css/photographer.css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <title>Fisheye - photographe</title>
   </head>
@@ -18,6 +26,7 @@
     </header>
     <main id="main">
       <div class="photograph-header">
+        <div class="photographer-infos"></div>
         <button
           class="contact_button"
           onclick="displayModal()"
@@ -25,7 +34,26 @@
         >
           Contactez-moi
         </button>
+        <div class="photographer-portrait"></div>
       </div>
+      <div class="sort-gallery">
+        <p>Trier par</p>
+        <button class="sort-selected" id="sort-selected">
+          <span class="select-icons"
+            ><i class="fa-solid fa-chevron-down"></i
+          ></span>
+          <div id="popularity">Popularité</div>
+        </button>
+        <div class="sort-to-select" id="sort-to-selected">
+          <span class="select-icons"
+            ><i class="fa-solid fa-chevron-up"></i
+          ></span>
+          <button id="popularity">Popularité</button>
+          <button id="date">Date</button>
+          <button id="title">Titre</button>
+        </div>
+      </div>
+      <div class="gallery"></div>
     </main>
     <div
       id="contact_modal"

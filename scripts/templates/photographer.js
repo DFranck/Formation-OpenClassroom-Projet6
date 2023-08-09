@@ -1,9 +1,12 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-unused-vars */
 /* eslint-disable quotes */
-function photographerTemplate(photographer) {
-  const { name, portrait, tagline, price, city, country } = photographer;
+function goToPhotographerPage(id) {
+  window.location = `photographer.html?id=${id}`;
+}
 
+function photographerTemplate(photographer) {
+  const { name, portrait, tagline, price, city, country, id } = photographer;
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
@@ -23,6 +26,10 @@ function photographerTemplate(photographer) {
     article.appendChild(h3);
     article.appendChild(p);
     article.appendChild(h4);
+
+    article.addEventListener("click", () => {
+      goToPhotographerPage(id);
+    });
     return article;
   }
   return { getUserCardDOM };
