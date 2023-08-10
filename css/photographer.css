@@ -70,30 +70,32 @@ body {
 }
 
 .sort-gallery {
+  position: relative;
   display: flex;
   font-size: 18px;
   line-height: 23.44px;
   font-weight: 700;
   margin: 10px 0;
   gap: 20px;
+  height: 60px;
 }
-/* .sort-gallery:focus .sort-selected {
-  display: none;
-  border: none;
-}
-.sort-gallery:focus .sort-to-select {
-  display: flex;
-} */
 .sort-gallery p {
   margin-top: 25px;
 }
 .select-icons i {
+  cursor: pointer;
   position: absolute;
-  top: 69px;
-  right: 10%;
+  z-index: 1;
+  top: 72px;
+  left: 135px;
+  color: #ffffff;
   transform: translateY(-45px);
 }
+.select-icons :nth-child(2) {
+  opacity: 0;
+}
 .sort-selected {
+  cursor: pointer;
   font-family: "DM Sans", sans-serif;
   border: none;
   position: relative;
@@ -110,8 +112,9 @@ body {
   padding-left: 20px;
   padding-top: 4.5px;
 }
-.sort-to-select {
-  position: relative;
+.sort-menu {
+  position: absolute;
+  left: 109.5px;
   background: #901c1c;
   color: #ffffff;
   width: 150px;
@@ -119,11 +122,13 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  padding: 16.5px 0;
   gap: 25px;
   padding-left: 20px;
   display: none;
 }
-.sort-to-select button {
+.sort-menu button {
   width: 150px;
   cursor: pointer;
   font-family: "DM Sans", sans-serif;

@@ -71,8 +71,6 @@ function displayPhotographerGallery(mediaOfThePage) {
     articleInfo.appendChild(h3);
     articleInfo.appendChild(p);
     gallery.appendChild(article);
-    // gallery.innerHTML += `<h1>${title}</h1> <h2>${likes}</h2> ${miniatureUrl}`;
-    console.log(title, likes, image, video, photographerId);
   });
 }
 
@@ -89,8 +87,19 @@ function displayPhotographer(photographerOfThePage, mediaOfThePage) {
 async function init() {
   const photographerOfThePage = await getPhotographer();
   const mediaOfThePage = await getPhotographerGallery(photographerOfThePage);
-  // console.log(photographerOfThePage, mediaOfThePage);
   displayPhotographer(photographerOfThePage, mediaOfThePage);
 }
 
 init();
+
+const sortBtn = document.getElementById("sort-selected");
+sortBtn.addEventListener("click", () => {
+  const sortSelected = document.getElementById("sort-selected");
+  const sortMenu = document.getElementById("sort-menu");
+  const arrowDown = document.querySelector(".fa-solid fa-chevron-down");
+  const arrowUp = document.querySelector(".fa-solid fa-chevron-up");
+  sortSelected.style.opacity = 0;
+  sortMenu.style.display = "flex";
+  arrowDown.style.opacity = 0;
+  arrowUp.style.opacity = 1;
+});
