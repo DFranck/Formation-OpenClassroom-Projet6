@@ -4,6 +4,13 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable operator-linebreak */
 /* eslint-disable quotes */
+const sortMenu = document.getElementById("sort-menu");
+const popularitySortBtn = document.getElementById("popularity-sort-btn");
+const dateSortBtn = document.getElementById("date-sort-btn");
+const titleSortBtn = document.getElementById("title-sort-btn");
+const activeSortBtn = document.getElementById("active-sort-btn");
+let activeSort = popularitySortBtn.value;
+
 function targetPhotographer(photographers) {
   const photographerOfThePage = photographers.find(
     (photographer) =>
@@ -83,23 +90,42 @@ function displayPhotographer(photographerOfThePage, mediaOfThePage) {
   displayPhotographerHeader(name, city, country, tagline, portrait);
   displayPhotographerGallery(mediaOfThePage);
 }
-
+async function sortGallery(selectedSort) {
+  const photographerOfThePage = await getPhotographer();
+  const mediaOfThePage = await getPhotographerGallery(photographerOfThePage);
+  console.log(mediaOfThePage);
+  if (selectedSort === popularitySortBtn.value) {
+    mediaOfThePage.sort((a, b) => a - b);
+    console.log(mediaOfThePage);
+    console.log("popsort");
+  } else if (selectedSort === dateSortBtn.value) {
+    console.log("datesort");
+  } else if (selectedSort === titleSortBtn.value) {
+    console.log("titresort");
+  }
+}
+function toogleMenu() {
+  const sortMenuBtn = [popularitySortBtn, dateSortBtn, titleSortBtn];
+  sortMenuBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeSort = btn.value;
+      sortMenu.style.visibility = "hidden";
+      activeSortBtn.innerHTML = `${activeSort} <i class="fa-solid fa-chevron-down"></i>`;
+      sortGallery(activeSort);
+    });
+  });
+}
 async function init() {
   const photographerOfThePage = await getPhotographer();
   const mediaOfThePage = await getPhotographerGallery(photographerOfThePage);
   displayPhotographer(photographerOfThePage, mediaOfThePage);
+  activeSortBtn.innerHTML = `${activeSort} <i class="fa-solid fa-chevron-down"></i>`;
+  sortGallery(activeSort);
 }
 
 init();
 
-const sortBtn = document.getElementById("sort-selected");
-sortBtn.addEventListener("click", () => {
-  const sortSelected = document.getElementById("sort-selected");
-  const sortMenu = document.getElementById("sort-menu");
-  const arrowDown = document.querySelector(".fa-solid fa-chevron-down");
-  const arrowUp = document.querySelector(".fa-solid fa-chevron-up");
-  sortSelected.style.opacity = 0;
-  sortMenu.style.display = "flex";
-  arrowDown.style.opacity = 0;
-  arrowUp.style.opacity = 1;
+activeSortBtn.addEventListener("click", () => {
+  sortMenu.style.visibility = "visible";
+  toogleMenu();
 });

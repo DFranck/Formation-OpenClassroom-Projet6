@@ -38,17 +38,13 @@
       </div>
       <div class="sort-gallery">
         <p>Trier par</p>
-        <button class="sort-selected" id="sort-selected">
-          Popularité
-          <span class="select-icons">
-            <i class="fa-solid fa-chevron-down"></i>
-            <i class="fa-solid fa-chevron-up"></i>
-          </span>
-        </button>
+        <button id="active-sort-btn"></button>
         <div class="sort-menu" id="sort-menu">
-          <button id="popularity">Popularité</button>
-          <button id="date">Date</button>
-          <button id="title">Titre</button>
+          <button id="popularity-sort-btn" value="Popularité">
+            Popularité<i class="fa-solid fa-chevron-up"></i>
+          </button>
+          <button id="date-sort-btn" value="Date">Date</button>
+          <button id="title-sort-btn" value="Titre">Titre</button>
         </div>
       </div>
       <div class="gallery"></div>
