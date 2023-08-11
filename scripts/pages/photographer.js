@@ -72,9 +72,10 @@ function displayPhotographerGallery(mediaOfThePage) {
     miniature.setAttribute("alt", title);
     const h3 = document.createElement("h3");
     h3.textContent = title;
-    const p = document.createElement("span");
-    p.className = "likes-span";
+    const p = document.createElement("p");
     p.innerHTML = `${likes} <i class="fa-solid fa-heart"></i>`;
+    p.setAttribute("aria-label", "likes");
+    p.className = "miniatures-likes";
 
     article.appendChild(miniature);
     article.appendChild(articleInfo);
@@ -84,14 +85,28 @@ function displayPhotographerGallery(mediaOfThePage) {
   });
 }
 
+function handleLikes() {}
+
+function displayPhotographerAside(price, mediaOfThePage) {
+  const asideContainer = document.getElementById("aside-container");
+  const sumLikes = mediaOfThePage.reduce((sum, media) => sum + media.likes, 0);
+  const photographerOfThePageTotalLikes = document.createElement("h3");
+  photographerOfThePageTotalLikes.innerHTML = `${sumLikes} <i class="fa-solid fa-heart"></i>`;
+  const photographerOfThePagePrice = document.createElement("h3");
+  photographerOfThePagePrice.textContent = `${price}€ / jour`;
+  asideContainer.appendChild(photographerOfThePageTotalLikes);
+  asideContainer.appendChild(photographerOfThePagePrice);
+}
 function displayPhotographer(photographerOfThePage, mediaOfThePage) {
   if (!photographerOfThePage) {
     document.body.innerHTML = "<h1>Error 404: Photographer Not Found</h1>";
   }
-  const { name, city, country, tagline, portrait } = photographerOfThePage;
+  const { name, city, country, tagline, portrait, price } =
+    photographerOfThePage;
 
   displayPhotographerHeader(name, city, country, tagline, portrait);
   displayPhotographerGallery(mediaOfThePage);
+  displayPhotographerAside(price, mediaOfThePage);
 }
 async function sortGallery(selectedSort) {
   const photographerOfThePage = await getPhotographer();
@@ -143,3 +158,5 @@ function toggleMenu() {
 activeSortBtn.addEventListener("click", () => {
   toggleMenu();
 });
+
+document.querySelectorAll("miniatures-likes").forEach((miniature) => {});
