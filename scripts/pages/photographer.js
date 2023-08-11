@@ -69,6 +69,7 @@ async function handleLikes(id, mediaOfThePage) {
   displayPhotographerGallery(mediaOfThePage);
   displayPhotographerAside(price, mediaOfThePage);
 }
+
 function lightboxModalDisplay(mediaOfThePage, currentIndex) {
   if (currentIndex < 0 || currentIndex >= mediaOfThePage.length) {
     console.error("index invalide");
@@ -89,8 +90,8 @@ function lightboxModalDisplay(mediaOfThePage, currentIndex) {
   lightboxModalMedia.src = lightboxModalMediaUrl;
   document.getElementById("modal-media").appendChild(lightboxModalMedia);
   document.getElementById("modal-title").appendChild(LightboxModalTitle);
-  console.log(media);
 }
+
 function lightboxModalToggle(mediaOfThePage, mediaId) {
   const asideContainer = document.getElementById("aside-container");
   const closeLightbox = document.getElementById("lightbox-modal-close");
@@ -104,6 +105,25 @@ function lightboxModalToggle(mediaOfThePage, mediaId) {
     (media) => media.id === mediaId
   );
   lightboxModalDisplay(mediaOfThePage, currentIndex);
+  const previousMediaBtn = document.getElementById("lightbox-modal-previous");
+  const nextMediaBtn = document.getElementById("lightbox-modal-next");
+
+  previousMediaBtn.addEventListener("click", () => {
+    if (currentIndex >= 0) {
+      const newCurrentIndex = currentIndex - 1;
+      document.getElementById("modal-media").innerHTML = "";
+      document.getElementById("modal-title").innerHTML = "";
+      lightboxModalDisplay(mediaOfThePage, newCurrentIndex);
+    }
+  });
+  nextMediaBtn.addEventListener("click", () => {
+    if (currentIndex <= 0) {
+      document.getElementById("modal-media").innerHTML = "";
+      document.getElementById("modal-title").innerHTML = "";
+      const newCurrentIndex = currentIndex + 1;
+      lightboxModalDisplay(mediaOfThePage, newCurrentIndex);
+    }
+  });
 }
 function displayPhotographerGallery(mediaOfThePage) {
   mediaOfThePage.forEach((galleryMedia) => {
