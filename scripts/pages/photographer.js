@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-use-before-define */
 /* eslint-disable comma-dangle */
 /* eslint-disable object-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
@@ -9,6 +10,7 @@ const popularitySortBtn = document.getElementById("popularity-sort-btn");
 const dateSortBtn = document.getElementById("date-sort-btn");
 const titleSortBtn = document.getElementById("title-sort-btn");
 const activeSortBtn = document.getElementById("active-sort-btn");
+
 let activeSort = popularitySortBtn.value;
 
 function targetPhotographer(photographers) {
@@ -55,13 +57,24 @@ function displayPhotographerHeader(name, city, country, tagline, portrait) {
   photographerinfo.appendChild(p);
   photographerPortrait.appendChild(img);
 }
+async function handleLikes(id, mediaOfThePage) {
+  const gallery = document.querySelector(".gallery");
+  const asideContainer = document.getElementById("aside-container");
+  const { price } = await getPhotographer();
+  const whatMedia = mediaOfThePage.find((media) => media.id === Number(id));
+  whatMedia.likes += 1;
+  gallery.innerHTML = "";
+  asideContainer.innerHTML = "";
+  displayPhotographerGallery(mediaOfThePage);
+  displayPhotographerAside(price, mediaOfThePage);
+}
 function displayPhotographerGallery(mediaOfThePage) {
   mediaOfThePage.forEach((galleryMedia) => {
-    const { title, likes, image, video, photographerId } = galleryMedia;
+    const gallery = document.querySelector(".gallery");
+    const { title, likes, image, video, photographerId, id } = galleryMedia;
     const miniatureUrl = galleryMedia.image
       ? `assets/gallery/${photographerId}/${image}`
       : `assets/gallery/${photographerId}/${video}`;
-    const gallery = document.querySelector(".gallery");
     const article = document.createElement("article");
     const articleInfo = document.createElement("div");
     articleInfo.className = "article-info";
@@ -73,19 +86,21 @@ function displayPhotographerGallery(mediaOfThePage) {
     const h3 = document.createElement("h3");
     h3.textContent = title;
     const p = document.createElement("p");
-    p.innerHTML = `${likes} <i class="fa-solid fa-heart"></i>`;
+    p.innerHTML = `${likes} <i class="fa-solid fa-heart likes-icon" id="${id}"></i>`;
     p.setAttribute("aria-label", "likes");
-    p.className = "miniatures-likes";
-
     article.appendChild(miniature);
     article.appendChild(articleInfo);
     articleInfo.appendChild(h3);
     articleInfo.appendChild(p);
     gallery.appendChild(article);
   });
+  const likesIcons = document.querySelectorAll(".likes-icon");
+  likesIcons.forEach((icon) => {
+    icon.addEventListener("click", (e) => {
+      handleLikes(e.target.id, mediaOfThePage);
+    });
+  });
 }
-
-function handleLikes() {}
 
 function displayPhotographerAside(price, mediaOfThePage) {
   const asideContainer = document.getElementById("aside-container");
@@ -158,5 +173,3 @@ function toggleMenu() {
 activeSortBtn.addEventListener("click", () => {
   toggleMenu();
 });
-
-document.querySelectorAll("miniatures-likes").forEach((miniature) => {});
