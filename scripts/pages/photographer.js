@@ -10,6 +10,7 @@ const popularitySortBtn = document.getElementById("popularity-sort-btn");
 const dateSortBtn = document.getElementById("date-sort-btn");
 const titleSortBtn = document.getElementById("title-sort-btn");
 const activeSortBtn = document.getElementById("active-sort-btn");
+const lightboxModal = document.getElementById("lightbox-modal");
 
 let activeSort = popularitySortBtn.value;
 
@@ -68,6 +69,42 @@ async function handleLikes(id, mediaOfThePage) {
   displayPhotographerGallery(mediaOfThePage);
   displayPhotographerAside(price, mediaOfThePage);
 }
+function lightboxModalDisplay(mediaOfThePage, currentIndex) {
+  if (currentIndex < 0 || currentIndex >= mediaOfThePage.length) {
+    console.error("index invalide");
+    return;
+  }
+  const media = mediaOfThePage[currentIndex];
+  const LightboxModalTitle = document.createElement("h5");
+  const lightboxModalMedia = document.createElement(
+    media.image ? "img" : "video"
+  );
+  if (!media.image) {
+    lightboxModalMedia.controls = true;
+  }
+  const lightboxModalMediaUrl = media.image
+    ? `assets/gallery/${media.photographerId}/${media.image}`
+    : `assets/gallery/${media.photographerId}/${media.video}`;
+  LightboxModalTitle.textContent = media.title;
+  lightboxModalMedia.src = lightboxModalMediaUrl;
+  document.getElementById("modal-media").appendChild(lightboxModalMedia);
+  document.getElementById("modal-title").appendChild(LightboxModalTitle);
+  console.log(media);
+}
+function lightboxModalToggle(mediaOfThePage, mediaId) {
+  const asideContainer = document.getElementById("aside-container");
+  const closeLightbox = document.getElementById("lightbox-modal-close");
+  closeLightbox.addEventListener("click", () => {
+    lightboxModal.style.display = "none";
+    asideContainer.style.visibility = "visible";
+    document.getElementById("modal-media").innerHTML = "";
+    document.getElementById("modal-title").innerHTML = "";
+  });
+  const currentIndex = mediaOfThePage.findIndex(
+    (media) => media.id === mediaId
+  );
+  lightboxModalDisplay(mediaOfThePage, currentIndex);
+}
 function displayPhotographerGallery(mediaOfThePage) {
   mediaOfThePage.forEach((galleryMedia) => {
     const gallery = document.querySelector(".gallery");
@@ -83,6 +120,8 @@ function displayPhotographerGallery(mediaOfThePage) {
     );
     miniature.src = miniatureUrl;
     miniature.setAttribute("alt", title);
+    miniature.setAttribute("id", id);
+    miniature.setAttribute("role", "lightbox-modal-toggle");
     const h3 = document.createElement("h3");
     h3.textContent = title;
     const p = document.createElement("p");
@@ -97,7 +136,18 @@ function displayPhotographerGallery(mediaOfThePage) {
   const likesIcons = document.querySelectorAll(".likes-icon");
   likesIcons.forEach((icon) => {
     icon.addEventListener("click", (e) => {
+      e.stopPropagation();
       handleLikes(e.target.id, mediaOfThePage);
+    });
+  });
+  const articles = document.querySelectorAll("article");
+  const asideContainer = document.getElementById("aside-container");
+  articles.forEach((article) => {
+    article.addEventListener("click", (e) => {
+      const mediaId = Number(e.target.id);
+      lightboxModal.style.display = "flex";
+      asideContainer.style.visibility = "hidden";
+      lightboxModalToggle(mediaOfThePage, mediaId);
     });
   });
 }
