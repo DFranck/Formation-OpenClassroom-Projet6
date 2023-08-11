@@ -20,7 +20,7 @@
   </head>
   <body>
     <header>
-      <a href="./index.html">
+      <a href="./index.html" alt="Fisheye Homepage">
         <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye" />
       </a>
     </header>
@@ -37,14 +37,45 @@
         <div class="photographer-portrait"></div>
       </div>
       <div class="sort-gallery">
-        <p>Trier par</p>
-        <button id="active-sort-btn"></button>
-        <div class="sort-menu" id="sort-menu">
-          <button id="popularity-sort-btn" value="Popularité">
+        <p id="sort-label">Trier par</p>
+        <button
+          id="active-sort-btn"
+          role="button"
+          aria-labelledby="sort-label"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="sort-menu"
+        ></button>
+        <div
+          class="sort-menu"
+          id="sort-menu"
+          role="listbox"
+          aria-activedescendant="popularity-sort-btn"
+        >
+          <button
+            id="popularity-sort-btn"
+            role="option"
+            value="Popularité"
+            aria-selected="true"
+          >
             Popularité<i class="fa-solid fa-chevron-up"></i>
           </button>
-          <button id="date-sort-btn" value="Date">Date</button>
-          <button id="title-sort-btn" value="Titre">Titre</button>
+          <button
+            id="date-sort-btn"
+            role="option"
+            value="Date"
+            aria-selected="false"
+          >
+            Date
+          </button>
+          <button
+            id="title-sort-btn"
+            role="option"
+            value="Titre"
+            aria-selected="false"
+          >
+            Titre
+          </button>
         </div>
       </div>
       <div class="gallery"></div>

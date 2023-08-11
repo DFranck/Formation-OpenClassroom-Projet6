@@ -47,11 +47,13 @@ function displayPhotographerHeader(name, city, country, tagline, portrait) {
   h3.textContent = `${city}, ${country}`;
   const p = document.createElement("p");
   p.textContent = tagline;
+  const img = document.createElement("img");
+  img.src = `assets/photographers/${portrait}`;
+  img.setAttribute("alt", name);
   photographerinfo.appendChild(h2);
   photographerinfo.appendChild(h3);
   photographerinfo.appendChild(p);
-  const img = `assets/photographers/${portrait}`;
-  photographerPortrait.style.backgroundImage = `url(${img})`;
+  photographerPortrait.appendChild(img);
 }
 function displayPhotographerGallery(mediaOfThePage) {
   mediaOfThePage.forEach((galleryMedia) => {
@@ -67,6 +69,7 @@ function displayPhotographerGallery(mediaOfThePage) {
       galleryMedia.image ? "img" : "video"
     );
     miniature.src = miniatureUrl;
+    miniature.setAttribute("alt", title);
     const h3 = document.createElement("h3");
     h3.textContent = title;
     const p = document.createElement("span");
@@ -96,17 +99,21 @@ async function sortGallery(selectedSort) {
   const gallery = document.querySelector(".gallery");
   if (selectedSort === popularitySortBtn.value) {
     mediaOfThePage.sort((a, b) => b.likes - a.likes);
+    sortMenu.setAttribute("aria-activedescendant", `popularity-sort-btn`);
+    popularitySortBtn.setAttribute("aria-selected", "true");
   } else if (selectedSort === dateSortBtn.value) {
     mediaOfThePage.sort((a, b) => new Date(b.date) - new Date(a.date));
+    sortMenu.setAttribute("aria-activedescendant", `date-sort-btn`);
+    dateSortBtn.setAttribute("aria-selected", "true");
   } else if (selectedSort === titleSortBtn.value) {
     mediaOfThePage.sort((a, b) => a.title.localeCompare(b.title));
+    sortMenu.setAttribute("aria-activedescendant", `title-sort-btn`);
+    titleSortBtn.setAttribute("aria-selected", "true");
   }
   gallery.innerHTML = "";
   displayPhotographerGallery(mediaOfThePage);
 }
-function toogleMenu() {
-  sortMenu.style.visibility = "visible";
-}
+
 async function init() {
   const photographerOfThePage = await getPhotographer();
   const mediaOfThePage = await getPhotographerGallery(photographerOfThePage);
@@ -117,16 +124,22 @@ async function init() {
 
 init();
 
-activeSortBtn.addEventListener("click", () => {
-  toogleMenu();
-});
-
-const sortMenuBtn = [popularitySortBtn, dateSortBtn, titleSortBtn];
-sortMenuBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    activeSort = btn.value;
-    sortMenu.style.visibility = "hidden";
-    activeSortBtn.innerHTML = `${activeSort} <i class="fa-solid fa-chevron-down"></i>`;
-    sortGallery(activeSort);
+function toggleMenu() {
+  sortMenu.style.visibility = "visible";
+  activeSortBtn.setAttribute("aria-expanded", "true");
+  const sortMenuBtn = [popularitySortBtn, dateSortBtn, titleSortBtn];
+  sortMenuBtn.forEach((btn) => {
+    btn.setAttribute("aria-selected", "false");
+    btn.addEventListener("click", () => {
+      activeSort = btn.value;
+      sortMenu.style.visibility = "hidden";
+      activeSortBtn.setAttribute("aria-expanded", "false");
+      activeSortBtn.innerHTML = `${activeSort} <i class="fa-solid fa-chevron-down"></i>`;
+      sortGallery(activeSort);
+    });
   });
+}
+
+activeSortBtn.addEventListener("click", () => {
+  toggleMenu();
 });
