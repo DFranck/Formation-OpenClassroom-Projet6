@@ -102,7 +102,6 @@ function lightboxModalToggle(mediaOfThePage, mediaId) {
   const asideContainer = document.getElementById("aside-container");
   const closeLightbox = document.getElementById("lightbox-modal-close");
   let currentIndex = mediaOfThePage.findIndex((media) => media.id === mediaId);
-  console.log(currentIndex);
   const previousMediaBtn = document.getElementById("lightbox-modal-previous");
   const nextMediaBtn = document.getElementById("lightbox-modal-next");
   lightboxModal.style.display = "flex";
