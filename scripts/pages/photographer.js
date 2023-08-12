@@ -116,19 +116,19 @@ function lightboxModalToggle(mediaOfThePage, mediaId) {
   previousMediaBtn.addEventListener("click", () => {
     document.getElementById("modal-media").innerHTML = "";
     document.getElementById("modal-title").innerHTML = "";
-    const newCurrentIndex = --currentIndex;
+    currentIndex -= 1;
+    const newCurrentIndex = currentIndex;
     if (newCurrentIndex >= 0 && newCurrentIndex < mediaOfThePage.length) {
       lightboxModalDisplay(mediaOfThePage, newCurrentIndex);
-      console.log(newCurrentIndex);
     }
   });
   nextMediaBtn.addEventListener("click", () => {
     document.getElementById("modal-media").innerHTML = "";
     document.getElementById("modal-title").innerHTML = "";
-    const newCurrentIndex = ++currentIndex;
+    currentIndex += 1;
+    const newCurrentIndex = currentIndex;
     if (newCurrentIndex >= 0 && newCurrentIndex < mediaOfThePage.length) {
       lightboxModalDisplay(mediaOfThePage, newCurrentIndex);
-      console.log(newCurrentIndex);
     }
   });
 }
