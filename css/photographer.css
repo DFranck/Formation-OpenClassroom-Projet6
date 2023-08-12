@@ -196,9 +196,14 @@ aside {
   color: #901c1c;
   font-size: 48px;
 }
+#lightbox-modal-center {
+  position: relative;
+}
 #lightbox-modal-close {
+  z-index: 10;
   position: absolute;
   top: 0;
+  right: -60px;
   cursor: pointer;
 }
 #lightbox-modal-next,

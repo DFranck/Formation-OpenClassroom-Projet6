@@ -71,9 +71,15 @@ async function handleLikes(id, mediaOfThePage) {
 }
 
 function lightboxModalDisplay(mediaOfThePage, currentIndex) {
-  if (currentIndex < 0 || currentIndex >= mediaOfThePage.length) {
-    console.error("index invalide");
-    return;
+  const previousMediaBtn = document.getElementById("lightbox-modal-previous");
+  const nextMediaBtn = document.getElementById("lightbox-modal-next");
+  if (currentIndex === 0) {
+    previousMediaBtn.style.visibility = "hidden";
+  } else if (currentIndex === mediaOfThePage.length - 1) {
+    nextMediaBtn.style.visibility = "hidden";
+  } else {
+    previousMediaBtn.style.visibility = "visible";
+    nextMediaBtn.style.visibility = "visible";
   }
   const media = mediaOfThePage[currentIndex];
   const LightboxModalTitle = document.createElement("h5");
@@ -95,36 +101,38 @@ function lightboxModalDisplay(mediaOfThePage, currentIndex) {
 function lightboxModalToggle(mediaOfThePage, mediaId) {
   const asideContainer = document.getElementById("aside-container");
   const closeLightbox = document.getElementById("lightbox-modal-close");
-  closeLightbox.addEventListener("click", () => {
-    lightboxModal.style.display = "none";
-    asideContainer.style.visibility = "visible";
-    document.getElementById("modal-media").innerHTML = "";
-    document.getElementById("modal-title").innerHTML = "";
-  });
-  const currentIndex = mediaOfThePage.findIndex(
-    (media) => media.id === mediaId
-  );
-  lightboxModalDisplay(mediaOfThePage, currentIndex);
+  let currentIndex = mediaOfThePage.findIndex((media) => media.id === mediaId);
+  console.log(currentIndex);
   const previousMediaBtn = document.getElementById("lightbox-modal-previous");
   const nextMediaBtn = document.getElementById("lightbox-modal-next");
-
+  lightboxModal.style.display = "flex";
+  asideContainer.style.visibility = "hidden";
+  lightboxModalDisplay(mediaOfThePage, currentIndex);
+  closeLightbox.addEventListener("click", (e) => {
+    lightboxModal.style.display = "none";
+    asideContainer.style.visibility = "visible";
+    e.stopPropagation();
+  });
   previousMediaBtn.addEventListener("click", () => {
-    if (currentIndex >= 0) {
-      const newCurrentIndex = currentIndex - 1;
-      document.getElementById("modal-media").innerHTML = "";
-      document.getElementById("modal-title").innerHTML = "";
+    document.getElementById("modal-media").innerHTML = "";
+    document.getElementById("modal-title").innerHTML = "";
+    const newCurrentIndex = --currentIndex;
+    if (newCurrentIndex >= 0 && newCurrentIndex < mediaOfThePage.length) {
       lightboxModalDisplay(mediaOfThePage, newCurrentIndex);
+      console.log(newCurrentIndex);
     }
   });
   nextMediaBtn.addEventListener("click", () => {
-    if (currentIndex <= 0) {
-      document.getElementById("modal-media").innerHTML = "";
-      document.getElementById("modal-title").innerHTML = "";
-      const newCurrentIndex = currentIndex + 1;
+    document.getElementById("modal-media").innerHTML = "";
+    document.getElementById("modal-title").innerHTML = "";
+    const newCurrentIndex = ++currentIndex;
+    if (newCurrentIndex >= 0 && newCurrentIndex < mediaOfThePage.length) {
       lightboxModalDisplay(mediaOfThePage, newCurrentIndex);
+      console.log(newCurrentIndex);
     }
   });
 }
+
 function displayPhotographerGallery(mediaOfThePage) {
   mediaOfThePage.forEach((galleryMedia) => {
     const gallery = document.querySelector(".gallery");
@@ -161,12 +169,11 @@ function displayPhotographerGallery(mediaOfThePage) {
     });
   });
   const articles = document.querySelectorAll("article");
-  const asideContainer = document.getElementById("aside-container");
   articles.forEach((article) => {
     article.addEventListener("click", (e) => {
       const mediaId = Number(e.target.id);
-      lightboxModal.style.display = "flex";
-      asideContainer.style.visibility = "hidden";
+      document.getElementById("modal-media").innerHTML = "";
+      document.getElementById("modal-title").innerHTML = "";
       lightboxModalToggle(mediaOfThePage, mediaId);
     });
   });
