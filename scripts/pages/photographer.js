@@ -51,7 +51,7 @@ function displayPhotographerHeader(name, city, country, tagline, portrait) {
   const p = document.createElement("p");
   p.textContent = tagline;
   const img = document.createElement("img");
-  img.src = `assets/photographers/${portrait}`;
+  img.src = `../assets/photographers/${portrait}`;
   img.setAttribute("alt", `Photo de ${name}`);
   photographerinfo.appendChild(h2);
   photographerinfo.appendChild(h3);
@@ -90,8 +90,8 @@ function lightboxModalDisplay(mediaOfThePage, currentIndex) {
     lightboxModalMedia.controls = true;
   }
   const lightboxModalMediaUrl = media.image
-    ? `assets/gallery/${media.photographerId}/${media.image}`
-    : `assets/gallery/${media.photographerId}/${media.video}`;
+    ? `../assets/gallery/${media.photographerId}/${media.image}`
+    : `../assets/gallery/${media.photographerId}/${media.video}`;
   LightboxModalTitle.textContent = media.title;
   lightboxModalMedia.src = lightboxModalMediaUrl;
   document.getElementById("modal-media").appendChild(lightboxModalMedia);
@@ -137,8 +137,8 @@ function displayPhotographerGallery(mediaOfThePage) {
     const gallery = document.querySelector(".gallery");
     const { title, likes, image, video, photographerId, id } = galleryMedia;
     const miniatureUrl = galleryMedia.image
-      ? `assets/gallery/${photographerId}/${image}`
-      : `assets/gallery/${photographerId}/${video}`;
+      ? `../assets/gallery/${photographerId}/${image}`
+      : `../assets/gallery/${photographerId}/${video}`;
     const article = document.createElement("article");
     const articleInfo = document.createElement("div");
     articleInfo.className = "article-info";

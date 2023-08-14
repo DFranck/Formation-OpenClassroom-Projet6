@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable quotes */
 function goToPhotographerPage(id) {
-  window.location = `photographer.html?id=${id}`;
+  window.location = `/pages/photographer.html?id=${id}`;
 }
 
 function photographerTemplate(photographer) {
