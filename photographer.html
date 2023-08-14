@@ -28,8 +28,8 @@
       <div class="photograph-header">
         <div class="photographer-infos"></div>
         <button
+          id="open-contact-modal"
           class="contact_button"
-          onclick="displayModal()"
           aria-label="Ouvrir le formulaire de contact"
         >
           Contactez-moi
@@ -104,10 +104,10 @@
     >
       <div class="modal">
         <header>
-          <h2 id="modal-title">Contactez-moi</h2>
+          <h2 id="contact-modal-title">Contactez-moi</h2>
           <img
+            id="close-contact-modal"
             src="assets/icons/close.svg"
-            onclick="closeModal()"
             aria-label="Fermer le formulaire de contact"
             role="button"
             tabindex="0"
@@ -117,8 +117,18 @@
           <div>
             <label for="prenom">Prénom</label>
             <input id="prenom" name="prenom" aria-required="true" />
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" aria-required="true" />
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" aria-required="true" />
+            <label for="text-area">Votre message</label>
+            <textarea
+              name="text-area"
+              id="text-area"
+              aria-required="true"
+            ></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button id="form-submit" class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
