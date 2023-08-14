@@ -52,7 +52,7 @@ function displayPhotographerHeader(name, city, country, tagline, portrait) {
   p.textContent = tagline;
   const img = document.createElement("img");
   img.src = `assets/photographers/${portrait}`;
-  img.setAttribute("alt", name);
+  img.setAttribute("alt", `Photo de ${name}`);
   photographerinfo.appendChild(h2);
   photographerinfo.appendChild(h3);
   photographerinfo.appendChild(p);
@@ -146,7 +146,7 @@ function displayPhotographerGallery(mediaOfThePage) {
       galleryMedia.image ? "img" : "video"
     );
     miniature.src = miniatureUrl;
-    miniature.setAttribute("alt", title);
+    miniature.setAttribute("alt", `${title}`);
     miniature.setAttribute("id", id);
     miniature.setAttribute("role", "lightbox-modal-toggle");
     const h3 = document.createElement("h3");
