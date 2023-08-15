@@ -1,16 +1,15 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-unused-vars */
 /* eslint-disable quotes */
-function goToPhotographerPage(id) {
-  window.location = `/pages/photographer.html?id=${id}`;
-}
 
 function photographerTemplate(photographer) {
   const { name, portrait, tagline, price, city, country, id } = photographer;
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
-    const article = document.createElement("article");
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.setAttribute("href", `/pages/photographer.html?id=${id}`);
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.setAttribute("alt", `Photo de ${name}`);
@@ -22,16 +21,14 @@ function photographerTemplate(photographer) {
     h3.textContent = `${city}, ${country}`;
     const h4 = document.createElement("h4");
     h4.textContent = `${price}/jour`;
-    article.appendChild(img);
-    article.appendChild(h2);
-    article.appendChild(h3);
-    article.appendChild(p);
-    article.appendChild(h4);
+    a.appendChild(img);
+    a.appendChild(h2);
+    a.appendChild(h3);
+    a.appendChild(p);
+    a.appendChild(h4);
+    li.appendChild(a);
 
-    article.addEventListener("click", () => {
-      goToPhotographerPage(id);
-    });
-    return article;
+    return li;
   }
   return { getUserCardDOM };
 }

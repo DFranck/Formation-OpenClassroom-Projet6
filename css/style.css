@@ -2,6 +2,8 @@
 * {
   margin: 0;
   padding: 0;
+  list-style: none;
+  text-decoration: none;
 }
 body {
   font-family: "DM Sans", sans-serif;
@@ -36,39 +38,39 @@ h1 {
   text-align: center;
 }
 
-article {
+a {
   display: flex;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
 }
-article h2,
-article h3,
-article h4,
-article p {
+a h2,
+a h3,
+a h4,
+a p {
   font-weight: 400;
 }
-article img {
+a img {
   height: 200px;
   width: 200px;
   border-radius: 200px;
   object-fit: cover;
 }
-article h2 {
+a h2 {
   color: #d3573c;
   font-size: 36px;
   line-height: 46.87px;
 }
-article h3 {
+a h3 {
   color: #901c1c;
   font-size: 13px;
   line-height: 16.93px;
 }
-article p {
+a p {
   font-size: 10px;
   line-height: 13.02px;
 }
-article h4 {
+a h4 {
   font-size: 9px;
   color: #757575;
   line-height: 11.72px;

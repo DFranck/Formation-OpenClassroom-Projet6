@@ -22,7 +22,6 @@ function displayPhotographers(photographers) {
 async function init() {
   const { photographers } = await getPhotographers();
   displayPhotographers(photographers);
-  console.log(photographers);
 }
 
 init();
