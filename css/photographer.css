@@ -6,7 +6,10 @@ body {
   position: relative;
   padding: 0 100px;
 }
-
+.logo {
+  margin: 0;
+  border-radius: 0px;
+}
 .photograph-header {
   position: relative;
   padding: 0 50px;
@@ -128,14 +131,32 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-article {
+.gallery li {
+  position: relative;
+}
+.card {
   width: 350px;
   height: 350px;
   display: block;
   margin-top: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
-article img,
-article video {
+.like-btn {
+  cursor: pointer;
+  position: absolute;
+  bottom: 13px;
+  right: 0;
+  border: none;
+  background: none;
+  color: #901c1c;
+  font-size: 24px;
+  font-weight: 500;
+  z-index: 1;
+}
+figure img,
+figure video {
   width: 350px;
   height: 300px;
   border-radius: 5px;
@@ -144,27 +165,22 @@ article video {
 }
 .article-info {
   position: relative;
+  color: #901c1c;
+  font-size: 24px;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transform: translateY(-5px);
+  font-weight: 500;
 }
-.article-info h3,
-.article-info p {
-  color: #901c1c;
-  font-size: 24px;
+.article-info h3 {
+  font-weight: 400;
   max-width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 31.25px;
-}
-.article-info h3 {
-  font-weight: 400;
-}
-.article-info p {
-  font-weight: 500;
 }
 
 aside {
@@ -181,9 +197,11 @@ aside {
   padding: 0 20px;
   font-size: 24px;
   font-weight: 500;
+  z-index: 2;
 }
 #lightbox-modal {
   position: fixed;
+  z-index: 2;
   height: 100%;
   width: 100vw;
   top: 50%;
@@ -196,15 +214,14 @@ aside {
   color: #901c1c;
   font-size: 48px;
 }
-#lightbox-modal-center {
-  position: relative;
-}
 #lightbox-modal-close {
   z-index: 10;
   position: absolute;
-  top: 0;
-  right: -60px;
+  top: -3vh;
+  right: -80px;
   cursor: pointer;
+  width: 80px;
+  height: 8vh;
 }
 #lightbox-modal-next,
 #lightbox-modal-previous {
@@ -212,13 +229,16 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 920px;
+  height: 80vh;
   width: 80px;
 }
 #modal-media {
+  position: relative;
   width: 1050px;
-  height: 900px;
+  height: 90vh;
   border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap-reverse;
 }
 #modal-media img,
 #modal-media video {

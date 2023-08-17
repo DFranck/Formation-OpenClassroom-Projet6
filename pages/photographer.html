@@ -25,81 +25,83 @@
       </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <section class="photograph-header">
         <div class="photographer-infos"></div>
         <button
           id="open-contact-modal"
           class="contact_button"
           aria-label="Ouvrir le formulaire de contact"
+          aria-haspopup="dialog"
         >
           Contactez-moi
         </button>
-        <div class="photographer-portrait"></div>
-      </div>
-      <div class="sort-gallery">
-        <p id="sort-label">Trier par</p>
-        <button
-          id="active-sort-btn"
-          role="button"
-          aria-labelledby="sort-label"
-          aria-haspopup="listbox"
-          aria-expanded="false"
-          aria-controls="sort-menu"
-        ></button>
-        <div
-          class="sort-menu"
-          id="sort-menu"
-          role="listbox"
-          aria-activedescendant="popularity-sort-btn"
-        >
+        <figure class="photographer-portrait"></figure>
+      </section>
+      <section class="gallery-container">
+        <div class="sort-gallery">
+          <p id="sort-label">Trier par</p>
           <button
-            id="popularity-sort-btn"
-            role="option"
-            value="Popularité"
-            aria-selected="true"
+            id="active-sort-btn"
+            role="button"
+            aria-labelledby="sort-label"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="sort-menu"
+          ></button>
+          <div
+            class="sort-menu"
+            id="sort-menu"
+            role="listbox"
+            aria-activedescendant="popularity-sort-btn"
           >
-            Popularité<i class="fa-solid fa-chevron-up"></i>
-          </button>
-          <button
-            id="date-sort-btn"
-            role="option"
-            value="Date"
-            aria-selected="false"
-          >
-            Date
-          </button>
-          <button
-            id="title-sort-btn"
-            role="option"
-            value="Titre"
-            aria-selected="false"
-          >
-            Titre
-          </button>
-        </div>
-      </div>
-      <div class="gallery"></div>
-      <div id="lightbox-modal">
-        <div id="lightbox-modal-previous">
-          <i class="fa-sharp fa-solid fa-chevron-left"></i>
-        </div>
-        <div id="lightbox-modal-center">
-          <div id="modal-media"></div>
-          <div id="modal-title"></div>
-          <div id="lightbox-modal-close">
-            <i class="fa-sharp fa-solid fa-xmark"></i>
+            <button
+              id="popularity-sort-btn"
+              role="option"
+              value="Popularité"
+              aria-selected="true"
+            >
+              Popularité<i class="fa-solid fa-chevron-up"></i>
+            </button>
+            <button
+              id="date-sort-btn"
+              role="option"
+              value="Date"
+              aria-selected="false"
+            >
+              Date
+            </button>
+            <button
+              id="title-sort-btn"
+              role="option"
+              value="Titre"
+              aria-selected="false"
+            >
+              Titre
+            </button>
           </div>
         </div>
-        <div id="lightbox-modal-next">
-          <i class="fa-sharp fa-solid fa-chevron-right"></i>
+        <ul class="gallery"></ul>
+        <div id="lightbox-modal" role="dialog" aria-modal="true">
+          <button id="lightbox-modal-previous">
+            <i class="fa-sharp fa-solid fa-chevron-left"></i>
+          </button>
+          <figure id="modal-media">
+            <figcaption id="modal-title"></figcaption>
+            <button id="lightbox-modal-close">
+              <i class="fa-sharp fa-solid fa-xmark"></i>
+            </button>
+          </figure>
+          <button id="lightbox-modal-next">
+            <i class="fa-sharp fa-solid fa-chevron-right"></i>
+          </button>
         </div>
-      </div>
-      <aside id="aside-container"></aside>
+        <aside id="aside-container"></aside>
+      </section>
     </main>
     <div
       id="contact_modal"
       role="dialog"
-      aria-labelledby="modal-title"
+      aria-labelledby="contact-modal-title"
       aria-hidden="true"
     >
       <div class="modal">
