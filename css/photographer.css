@@ -183,7 +183,7 @@ figure video {
   line-height: 31.25px;
 }
 
-aside {
+footer {
   background: #db8876;
   height: 69px;
   border-radius: 5px 5px 0 0;
@@ -211,10 +211,12 @@ aside {
   display: none;
   justify-content: center;
   align-items: center;
-  color: #901c1c;
   font-size: 48px;
+  color: #901c1c;
 }
 #lightbox-modal-close {
+  font-size: 48px;
+  color: #901c1c;
   z-index: 10;
   position: absolute;
   top: -3vh;
@@ -222,15 +224,21 @@ aside {
   cursor: pointer;
   width: 80px;
   height: 8vh;
+  border: none;
+  background: none;
 }
 #lightbox-modal-next,
 #lightbox-modal-previous {
+  font-size: 48px;
+  color: #901c1c;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80vh;
   width: 80px;
+  border: none;
+  background: none;
 }
 #modal-media {
   position: relative;
