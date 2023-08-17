@@ -49,6 +49,8 @@ async function getDataOfThePage() {
 function displayPhotographerHeader(city, country, name, portrait, tagline) {
   const photographerinfo = document.querySelector(".photographer-infos");
   const photographerPortrait = document.querySelector(".photographer-portrait");
+  photographerinfo.innerHTML = "";
+  photographerPortrait.innerHTML = "";
   const h2 = document.createElement("h2");
   h2.textContent = name;
   const h3 = document.createElement("h3");
