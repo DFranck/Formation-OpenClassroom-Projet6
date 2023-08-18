@@ -26,18 +26,27 @@ displayModalBtn.addEventListener("click", () => {
     const { name, id } = photographerOfThePage;
     const modalTitle = document.getElementById("contact-modal-title");
     modalTitle.innerHTML = `Contactez-moi<br/>${name}`;
+    const prenomInput = document.getElementById("prenom");
+    prenomInput.focus();
+
     return id;
+    // document.addEventListener('keydown'(e)=>{
+    //   if (e.key==="Tab")
+    // })
   }
   displayModal();
 });
 const closeModalBtn = document.getElementById("close-contact-modal");
+function closeModal() {
+  const modal = document.getElementById("contact_modal");
+  modal.style.display = "none";
+  document.body.classList.remove("backgroundBlur");
+}
 closeModalBtn.addEventListener("click", () => {
-  function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
-    document.body.classList.remove("backgroundBlur");
-  }
   closeModal();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
 });
 
 function submitForm(e) {
@@ -46,6 +55,7 @@ function submitForm(e) {
     const inputValue = input.value;
     const inputName = input.id;
     console.log(`${inputName} = ${inputValue}`);
+    closeModal();
   });
 }
 document.querySelector("form").addEventListener("submit", (e) => {
