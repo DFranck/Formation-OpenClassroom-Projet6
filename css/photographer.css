@@ -288,6 +288,8 @@ footer {
   box-shadow: -5px 10px 30px 0 rgba(0, 0, 0, 6.25);
   border-radius: 5px;
   padding: 50px;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
 .modal header {

@@ -122,6 +122,7 @@ async function displayDataOfThePage(photographerOfThePage, mediasOfThePage) {
   displayPhotographerOfThePage(photographerOfThePage, mediasOfThePage);
   displayMediaOfThePage(mediasOfThePage);
   handleLikes(photographerOfThePage, mediasOfThePage);
+  lightboxModalToggle(mediasOfThePage);
 }
 
 // ************************
@@ -200,7 +201,6 @@ function handleLikes(photographerOfThePage, mediasOfThePage) {
 // *** LIGHTBOX START ***
 // ************************
 function lightboxModalNav(currentIndex, mediasOfThePage) {
-  const closeLightbox = document.getElementById("lightbox-modal-close");
   const previousMediaBtn = document.getElementById("lightbox-modal-previous");
   const nextMediaBtn = document.getElementById("lightbox-modal-next");
   const lightboxModal = document.getElementById("lightbox-modal");
@@ -339,7 +339,7 @@ function lightboxModalToggle(mediasOfThePage) {
 async function initialisation() {
   const { photographerOfThePage, mediasOfThePage } = await getDataOfThePage();
   await displayDataOfThePage(photographerOfThePage, mediasOfThePage);
-  lightboxModalToggle(mediasOfThePage);
+
   activeSortBtn.innerHTML = `${activeSort} <i class="fa-solid fa-chevron-down"></i>`;
 }
 initialisation();
