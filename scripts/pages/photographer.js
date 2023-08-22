@@ -245,9 +245,11 @@ function lightboxModalToggle(mediasOfThePage) {
   const closeLightbox = document.getElementById("lightbox-modal-close");
   const lightboxModal = document.getElementById("lightbox-modal");
   const asideContainer = document.getElementById("details-footer-container");
+  const previousMediaBtn = document.getElementById("lightbox-modal-previous");
+  const nextMediaBtn = document.getElementById("lightbox-modal-next");
   let mediaId = "";
   function lightboxModalOpen() {
-    lightboxModal.style.display = "flex";
+    lightboxModal.style.visibility = "visible";
     asideContainer.style.visibility = "hidden";
     const currentIndex = mediasOfThePage.findIndex(
       (media) => media.id === mediaId
@@ -256,8 +258,10 @@ function lightboxModalToggle(mediasOfThePage) {
     lightboxModalNav(currentIndex, mediasOfThePage);
   }
   function lightboxModalClose() {
-    lightboxModal.style.display = "none";
+    lightboxModal.style.visibility = "hidden";
     asideContainer.style.visibility = "visible";
+    previousMediaBtn.style.visibility = "hidden";
+    nextMediaBtn.style.visibility = "hidden";
   }
   closeLightbox.addEventListener("click", () => {
     lightboxModalClose();
@@ -298,7 +302,7 @@ CLICK NAVIGATION
 KEYBOARD NAVIGATION
 */
   document.addEventListener("keydown", (e) => {
-    if (lightboxModal.style.display === "flex") {
+    if (lightboxModal.style.visibility === "visible") {
       switch (e.key) {
         case "ArrowRight":
           if (!(currentIndex === mediasOfThePage.length - 1)) {

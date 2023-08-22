@@ -1,5 +1,5 @@
 #contact_modal {
-  display: none;
+  visibility: hidden;
 }
 
 body {
@@ -208,7 +208,8 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fafafa;
-  display: none;
+  visibility: hidden;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 48px;

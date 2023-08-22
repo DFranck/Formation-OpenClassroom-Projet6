@@ -21,7 +21,7 @@ displayModalBtn.addEventListener("click", () => {
   async function displayModal() {
     const photographerOfThePage = await getPhotographer();
     const modal = document.getElementById("contact_modal");
-    modal.style.display = "block";
+    modal.style.visibility = "visible";
     document.body.classList.add("backgroundBlur");
     const { name, id } = photographerOfThePage;
     const modalTitle = document.getElementById("contact-modal-title");
@@ -39,7 +39,7 @@ displayModalBtn.addEventListener("click", () => {
 const closeModalBtn = document.getElementById("close-contact-modal");
 function closeModal() {
   const modal = document.getElementById("contact_modal");
-  modal.style.display = "none";
+  modal.style.visibility = "hidden";
   document.body.classList.remove("backgroundBlur");
 }
 closeModalBtn.addEventListener("click", () => {
