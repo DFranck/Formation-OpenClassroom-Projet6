@@ -1,8 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable object-curly-newline */
-/* eslint-disable quotes */
+import photographerTemplate from '../templates/photographer.js';
+
 async function getPhotographers() {
-  const response = await fetch("../../data/photographers.json");
+  const response = await fetch('../../data/photographers.json');
   const { photographers } = await response.json();
   return {
     photographers,
@@ -10,7 +9,7 @@ async function getPhotographers() {
 }
 
 function displayPhotographers(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
+  const photographersSection = document.querySelector('.photographer_section');
 
   photographers.forEach((photographer) => {
     const photographerModel = photographerTemplate(photographer);

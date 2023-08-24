@@ -1,14 +1,4 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-use-before-define */
-/* eslint-disable max-len */
-/* eslint-disable comma-dangle */
-/* eslint-disable operator-linebreak */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable object-curly-newline */
-/* eslint-disable no-unused-vars */
-/* eslint-disable quotes */
+
 // ************************
 // *** Variables Globales ***
 // ************************
@@ -147,8 +137,8 @@ function displayMediaOfThePage(
 DISPLAY LIGHTBOX
 */
 function lightboxModalDisplay(currentIndex, mediasOfThePage) {
-  let CurrentMediaTitle = "";
-  let CurrentMediaContent = "";
+  let currentMediaTitle = "";
+  let currentMediaContent = "";
   let lightboxModalMediaUrl = "";
   const previousMediaBtn = document.getElementById("lightbox-modal-previous");
   const nextMediaBtn = document.getElementById("lightbox-modal-next");
@@ -156,27 +146,28 @@ function lightboxModalDisplay(currentIndex, mediasOfThePage) {
   const modalMedia = document.getElementById("modal-media");
   modalMedia.removeChild(modalMedia.lastChild);
   const media = mediasOfThePage[currentIndex];
-  CurrentMediaContent = document.createElement(media.image ? "img" : "video");
-  CurrentMediaTitle = media.title;
-  if (!media.image) {
-    CurrentMediaContent.controls = true;
+  const {title, image, video,photographerId} = media
+  currentMediaContent = document.createElement(image ? "img" : "video");
+  currentMediaTitle = title;
+  if (!image) {
+    currentMediaContent.controls = true;
     document.addEventListener("keydown", function playPauseVideo(event) {
       if (event.code === "Space") {
-        if (CurrentMediaContent.paused) {
-          CurrentMediaContent.play();
+        if (currentMediaContent.paused) {
+          currentMediaContent.play();
         } else {
-          CurrentMediaContent.pause();
+          currentMediaContent.pause();
         }
         event.preventDefault();
       }
     });
   }
-  lightboxModalMediaUrl = media.image
-    ? `../assets/gallery/${media.photographerId}/${media.image}`
-    : `../assets/gallery/${media.photographerId}/${media.video}`;
-  CurrentMediaContent.src = lightboxModalMediaUrl;
-  CurrentMediaContent.setAttribute("alt", `image  de ${media.title}`);
-  CurrentMediaContent.classList.add("current-media");
+  lightboxModalMediaUrl = image
+    ? `../assets/gallery/${photographerId}/${image}`
+    : `../assets/gallery/${photographerId}/${video}`;
+  currentMediaContent.src = lightboxModalMediaUrl;
+  currentMediaContent.setAttribute("alt", `image  de ${title}`);
+  currentMediaContent.classList.add("current-media");
   if (currentIndex === 0) {
     previousMediaBtn.style.visibility = "hidden";
   } else if (currentIndex === mediasOfThePage.length - 1) {
@@ -185,8 +176,8 @@ function lightboxModalDisplay(currentIndex, mediasOfThePage) {
     previousMediaBtn.style.visibility = "visible";
     nextMediaBtn.style.visibility = "visible";
   }
-  modalMedia.appendChild(CurrentMediaContent);
-  modalTitle.textContent = CurrentMediaTitle;
+  modalMedia.appendChild(currentMediaContent);
+  modalTitle.textContent = currentMediaTitle;
 }
 // ************************
 // *** INTERACTIONS ***
