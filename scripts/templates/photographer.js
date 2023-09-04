@@ -18,7 +18,7 @@ function photographerTemplate(photographer) {
     const h3 = document.createElement('h3');
     h3.textContent = `${city}, ${country}`;
     const h4 = document.createElement('h4');
-    h4.textContent = `${price}/jour`;
+    h4.textContent = `${price}€/jour`;
     a.appendChild(img);
     a.appendChild(h2);
     a.appendChild(h3);
