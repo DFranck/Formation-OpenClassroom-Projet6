@@ -343,7 +343,7 @@ KEYBOARD NAVIGATION
             ) {
               lightboxModalDisplay(newCurrentIndex, mediasOfThePage);
             }
-          }u;
+          }
           break;
         default:
           break;
