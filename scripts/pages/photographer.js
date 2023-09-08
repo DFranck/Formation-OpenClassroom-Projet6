@@ -147,8 +147,8 @@ function lightboxModalDisplay(currentIndex, mediasOfThePage) {
   const modalMedia = document.getElementById('modal-media');
   const main = document.querySelector('main');
   main.setAttribute('aria-hidden', true);
-  modalMedia.focus();
   modalMedia.removeChild(modalMedia.lastChild);
+
   const media = mediasOfThePage[currentIndex];
   const {
     title, image, video, photographerId,
@@ -260,6 +260,7 @@ function lightboxModalToggle(mediasOfThePage) {
     );
     lightboxModalDisplay(currentIndex, mediasOfThePage);
     lightboxModalNav(currentIndex, mediasOfThePage);
+    document.getElementById('modal-title').focus();
   }
   function lightboxModalClose() {
     lightboxModal.style.visibility = 'hidden';
