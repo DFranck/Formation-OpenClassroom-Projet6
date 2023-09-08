@@ -16,18 +16,16 @@ function closeModal() {
   modal.style.visibility = 'hidden';
   document.body.classList.remove('backgroundBlur');
 }
-function submitForm(e, id) {
+function submitForm(e) {
   e.preventDefault();
-  // ici l'id sert a lier un email ou autre a qui envoyer le form
-  console.log(id);
   const inputsForm = e.target.querySelectorAll('input, textarea');
   inputsForm.forEach((input) => {
     const inputValue = input.value;
     const inputName = input.id;
     console.log(`${inputName} = ${inputValue}`);
-    closeModal();
-    document.querySelector('form').reset();
   });
+  closeModal();
+  document.querySelector('form').reset();
 }
 function displayModal(name, prenomInput) {
   const modalTitle = document.getElementById('contact-modal-title');
@@ -45,7 +43,7 @@ function displayModal(name, prenomInput) {
 }
 async function init() {
   const photographerOfThePage = await getPhotographer();
-  const { name, id } = photographerOfThePage;
+  const { name } = photographerOfThePage;
   const prenomInput = document.getElementById('prenom');
   const nomInput = document.getElementById('nom');
   const email = document.getElementById('email');
@@ -56,7 +54,7 @@ async function init() {
   });
   document.querySelector('form').addEventListener('submit', (e) => {
     if (prenomInput.value && nomInput.value && email.value && textArea.value) {
-      submitForm(e, id);
+      submitForm(e);
     } else {
       e.preventDefault();
       alert('Le formulaire doit être rempli completement');
