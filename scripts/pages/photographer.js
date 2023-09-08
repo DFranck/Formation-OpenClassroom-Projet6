@@ -148,7 +148,7 @@ function lightboxModalDisplay(currentIndex, mediasOfThePage) {
   const main = document.querySelector('main');
   main.setAttribute('aria-hidden', true);
   modalMedia.removeChild(modalMedia.lastChild);
-
+  document.getElementById('modal-media').focus();
   const media = mediasOfThePage[currentIndex];
   const {
     title, image, video, photographerId,
@@ -260,7 +260,6 @@ function lightboxModalToggle(mediasOfThePage) {
     );
     lightboxModalDisplay(currentIndex, mediasOfThePage);
     lightboxModalNav(currentIndex, mediasOfThePage);
-    document.getElementById('modal-title').focus();
   }
   function lightboxModalClose() {
     lightboxModal.style.visibility = 'hidden';
@@ -280,6 +279,7 @@ function lightboxModalToggle(mediasOfThePage) {
   cards.forEach((card) => {
     card.addEventListener('click', (e) => {
       mediaId = Number(e.currentTarget.id);
+
       lightboxModalOpen(mediaId, mediasOfThePage);
     });
   });
@@ -343,7 +343,7 @@ KEYBOARD NAVIGATION
             ) {
               lightboxModalDisplay(newCurrentIndex, mediasOfThePage);
             }
-          }
+          }u;
           break;
         default:
           break;
