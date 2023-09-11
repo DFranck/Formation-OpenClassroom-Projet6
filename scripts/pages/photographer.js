@@ -134,6 +134,87 @@ function displayMediaOfThePage(
   toggleSortMenu(activeSort, photographerOfThePage, mediasOfThePage);
   lightboxModalToggle(mediasOfThePage);
 }
+// class MediaElement {
+//   constructor(data) {
+//     this.data = data;
+//   }
+
+//   createElement() {
+//     throw new Error('Method createElement() must be overridden in subclass');
+//   }
+
+//   wrapElement(element) {
+//     const { title, likes, id } = this.data;
+
+//     const li = document.createElement('li');
+//     const button = document.createElement('button');
+//     button.className = 'card';
+//     const figure = document.createElement('figure');
+//     const figcaption = document.createElement('figcaption');
+//     figcaption.className = 'article-info';
+//     const h3 = document.createElement('h3');
+//     h3.textContent = title;
+//     const likeBtn = document.createElement('button');
+//     likeBtn.innerHTML = `${likes} <i class="fa-solid fa-heart"></i>`;
+//     likeBtn.className = 'like-btn';
+//     likeBtn.setAttribute('id', `${id}`);
+//     likeBtn.setAttribute('aria-label', 'likes');
+
+//     figure.appendChild(element);
+//     figure.appendChild(figcaption);
+//     figcaption.appendChild(h3);
+//     li.appendChild(likeBtn);
+//     button.appendChild(figure);
+//     li.appendChild(button);
+
+//     return li;
+//   }
+// }
+
+// class ImageElement extends MediaElement {
+//   createElement() {
+//     const img = document.createElement('img');
+//     img.src = `../assets/gallery/${this.data.photographerId}/${this.data.image}`;
+//     img.alt = this.data.title;
+
+//     return this.wrapElement(img);
+//   }
+// }
+
+// class VideoElement extends MediaElement {
+//   createElement() {
+//     const video = document.createElement('video');
+//     video.src = `../assets/gallery/${this.data.photographerId}/${this.data.video}`;
+
+//     return this.wrapElement(video);
+//   }
+// }
+
+// class MediaElementFactory {
+//   static createMediaElement(data) {
+//     if (data.image) {
+//       return new ImageElement(data);
+//     } if (data.video) {
+//       return new VideoElement(data);
+//     }
+//     throw new Error('Unknown media type');
+//   }
+// }
+
+// function displayMediaOfThePage(activeSort, photographerOfThePage, mediasOfThePage) {
+//   const gallery = document.querySelector('.gallery');
+
+//   mediasOfThePage.forEach((galleryMedia) => {
+//     const mediaElement = MediaElementFactory.createMediaElement(galleryMedia);
+//     const mediaItem = mediaElement.createElement();
+//     gallery.appendChild(mediaItem);
+//   });
+
+//   handleLikes(photographerOfThePage, mediasOfThePage);
+//   toggleSortMenu(activeSort, photographerOfThePage, mediasOfThePage);
+//   lightboxModalToggle(mediasOfThePage);
+// }
+
 /*
 DISPLAY LIGHTBOX
 */
