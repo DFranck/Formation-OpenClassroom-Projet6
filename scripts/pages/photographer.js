@@ -47,6 +47,7 @@ async function sortGallery(
   }
   gallery.innerHTML = '';
   displayMediaOfThePage(selectedSort, photographerOfThePage, mediasOfThePage);
+  // displayFactoryMediaOfThePage(selectedSort, photographerOfThePage, mediasOfThePage);
 }
 // ************************
 // *** DISPLAY ***
@@ -201,7 +202,7 @@ function displayMediaOfThePage(
 //   }
 // }
 
-// function displayMediaOfThePage(activeSort, photographerOfThePage, mediasOfThePage) {
+// function displayFactoryMediaOfThePage(activeSort, photographerOfThePage, mediasOfThePage) {
 //   const gallery = document.querySelector('.gallery');
 
 //   mediasOfThePage.forEach((galleryMedia) => {
