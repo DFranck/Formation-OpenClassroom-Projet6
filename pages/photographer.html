@@ -60,7 +60,10 @@
               value="Popularité"
               aria-selected="true"
             >
-              Popularité<em class="fa-solid fa-chevron-up"></em>
+              Popularité<span
+                class="fa-solid fa-chevron-up"
+                aria-hidden="true"
+              ></span>
             </button>
             <button
               id="date-sort-btn"
@@ -92,16 +95,22 @@
       aria-hidden="true"
     >
       <button id="lightbox-modal-previous" aria-label="previous media">
-        <em class="fa-sharp fa-solid fa-chevron-left"></em>
+        <span
+          class="fa-sharp fa-solid fa-chevron-left"
+          aria-hidden="true"
+        ></span>
       </button>
       <figure id="modal-media" tabindex="0" aria-live="polite">
         <figcaption id="modal-title"></figcaption>
         <button id="lightbox-modal-close" aria-label="close media">
-          <em class="fa-sharp fa-solid fa-xmark"></em>
+          <span class="fa-sharp fa-solid fa-xmark" aria-hidden="true"></span>
         </button>
       </figure>
       <button id="lightbox-modal-next" aria-label="next media">
-        <em class="fa-sharp fa-solid fa-chevron-right"></em>
+        <span
+          class="fa-sharp fa-solid fa-chevron-right"
+          aria-hidden="true"
+        ></span>
       </button>
     </modal>
 
