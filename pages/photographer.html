@@ -43,7 +43,7 @@
           <button
             id="active-sort-btn"
             role="button"
-        aria-labelledby="sort-label"
+            aria-labelledby="sort-label"
             aria-haspopup="listbox"
             aria-expanded="false"
             aria-controls="sort-menu"
@@ -60,7 +60,7 @@
               value="Popularité"
               aria-selected="true"
             >
-              Popularité<i class="fa-solid fa-chevron-up"></i>
+              Popularité<em class="fa-solid fa-chevron-up"></em>
             </button>
             <button
               id="date-sort-btn"
@@ -84,54 +84,63 @@
       </section>
     </main>
     <footer id="details-footer-container"></footer>
-    <modal id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-modal" aria-hidden="true" >
+    <modal
+      id="lightbox-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lightbox-modal"
+      aria-hidden="true"
+    >
       <button id="lightbox-modal-previous" aria-label="previous media">
-        <i class="fa-sharp fa-solid fa-chevron-left"></i>
+        <em class="fa-sharp fa-solid fa-chevron-left"></em>
       </button>
       <figure id="modal-media" tabindex="0" aria-live="polite">
         <figcaption id="modal-title"></figcaption>
         <button id="lightbox-modal-close" aria-label="close media">
-          <i class="fa-sharp fa-solid fa-xmark"></i>
+          <em class="fa-sharp fa-solid fa-xmark"></em>
         </button>
       </figure>
       <button id="lightbox-modal-next" aria-label="next media">
-        <i class="fa-sharp fa-solid fa-chevron-right"></i>
+        <em class="fa-sharp fa-solid fa-chevron-right"></em>
       </button>
     </modal>
-    
-      <modal class="modal" id="contact_modal"
+
+    <modal
+      class="modal"
+      id="contact_modal"
       role="dialog"
       aria-labelledby="contact-modal-title"
-      aria-hidden="true">
-        <header role="banner">
-          <h2 id="contact-modal-title">Contactez-moi</h2>
-          <img
-            id="close-contact-modal"
-            src="../assets/icons/close.svg"
-            aria-label="Fermer le formulaire de contact"
-            role="button"
-            tabindex="0"
-            alt="cross"
-          />
-        </header>
-        <form>
-          <div>
-            <label for="prenom">Prénom</label>
-            <input id="prenom" name="prenom" aria-required="true" />
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" aria-required="true" />
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" aria-required="true" />
-            <label for="text-area">Votre message</label>
-            <textarea
-              name="text-area"
-              id="text-area"
-              aria-required="true"
-            ></textarea>
-          </div>
-          <button id="form-submit" class="contact_button">Envoyer</button>
-        </form>
-      </modal>
+      aria-hidden="true"
+    >
+      <header role="banner">
+        <h2 id="contact-modal-title">Contactez-moi</h2>
+        <img
+          id="close-contact-modal"
+          src="../assets/icons/close.svg"
+          aria-label="Fermer le formulaire de contact"
+          role="button"
+          tabindex="0"
+          alt="cross"
+        />
+      </header>
+      <form>
+        <div>
+          <label for="prenom">Prénom</label>
+          <input id="prenom" name="prenom" aria-required="true" />
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" aria-required="true" />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" aria-required="true" />
+          <label for="text-area">Votre message</label>
+          <textarea
+            name="text-area"
+            id="text-area"
+            aria-required="true"
+          ></textarea>
+        </div>
+        <button id="form-submit" class="contact_button">Envoyer</button>
+      </form>
+    </modal>
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
